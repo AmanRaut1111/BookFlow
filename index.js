@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 var cookieParser = require('cookie-parser')
 dotenv.config();
 
+const fs = require('fs')
+
 const db = require("./config/db");
 const userRouter = require("./Routers/userRouter");
 const bookRouter = require("./Routers/bookRouter");
@@ -10,6 +12,7 @@ const bookRouter = require("./Routers/bookRouter");
 const app = express();
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use("/user", userRouter);
 app.use('/book', bookRouter)
@@ -19,11 +22,12 @@ app.post("/", (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.cookie({ name: "Aman" })
 
-  console.log(res.cookie);
+  fs.readFileSync()
 })
 
 app.listen(process.env.PORT, () => {
   console.log("server is listening on port", process.env.PORT);
 });
+
+
