@@ -8,12 +8,14 @@ const userRouter = express.Router()
 
 
 
+
+
 userRouter.post('/', registerUser)
 
 userRouter.post('/login', loginUser);
 
 
-userRouter.post('/changeOnlineStatus', changeOnlinestatus);
+userRouter.post('/changeOnlineStatus/:id', changeOnlinestatus);
 
 userRouter.patch('/updatePassword/:id', updatePassword)
 

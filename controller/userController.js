@@ -64,13 +64,11 @@ const loginUser = async (req, res) => {
 
 const changeOnlinestatus = async (req, res) => {
     try {
-        const { _id, isOnline } = req.body
+        const { isOnline } = req.body
 
+        const { id } = req.params.id
 
-        if (!_id) {
-            return res.status(500).json({ message: "Please Provide User Information...!", status: false, statusCode: 500 })
-        }
-        const client = await userModel.updateOne({ _id }, { $set: { isOnline: isOnline }, new: true });
+        const client = await userModel.updateOne({ id }, { $set: { isOnline: isOnline }, new: true });
         if (client) {
             res.status(200).json({ message: "User Online Status Updated", status: true, statusCode: 200, data: client })
         } else {
