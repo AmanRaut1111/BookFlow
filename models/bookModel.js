@@ -9,6 +9,9 @@ const BookSchema = new mongoose.Schema({
     desc: {
         type: String,
     },
+    price: {
+        type: String
+    },
 
     authorName: {
         type: String,
