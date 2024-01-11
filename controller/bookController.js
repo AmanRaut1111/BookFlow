@@ -5,11 +5,12 @@ const bookModel = require('../models/bookModel');
 
 const addBook = async (req, res) => {
     try {
-        const { title, desc, authorName, publishedOn } = req.body
+        const { title, desc, authorName, publishedOn, price } = req.body
         const bookData = bookModel({
             title: title,
             desc: desc,
             authorName: authorName,
+            price: price,
             publishedOn: publishedOn
         })
 

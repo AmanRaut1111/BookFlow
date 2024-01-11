@@ -22,6 +22,15 @@ const userSchema = mongoose.Schema({
     default: false
   },
 
+  cartItem: [{
+    productId: {
+      type: String,
+
+    },
+
+  }],
+
+
   createdAt: {
     type: Date,
     default: new Date()

@@ -1,27 +1,22 @@
-const express = require('express');
-const { registerUser, loginUser, changeOnlinestatus, updatePassword } = require('../controller/userController');
+const express = require("express");
+const {
+    registerUser,
+    loginUser,
+    changeOnlinestatus,
+    updatePassword,
+    sendMail,
+} = require("../controller/userController");
+const auth = require("../middleware/auth");
 
+const userRouter = express.Router();
 
+userRouter.post("/", registerUser);
+userRouter.post('/sendmail', sendMail)
 
-const userRouter = express.Router()
+userRouter.post("/login", auth, loginUser);
 
+userRouter.post("/changeOnlineStatus/:id", changeOnlinestatus);
 
+userRouter.patch("/updatePassword/:id", updatePassword);
 
-
-
-
-userRouter.post('/', registerUser)
-
-userRouter.post('/login', loginUser);
-
-
-userRouter.post('/changeOnlineStatus/:id', changeOnlinestatus);
-
-userRouter.patch('/updatePassword/:id', updatePassword)
-
-
-
-
-
-
-module.exports = userRouter 
+module.exports = userRouter;
